@@ -16,13 +16,35 @@ from closed chromatin regions using DNA sequence alone?
 
 * One-hot encoding: 4 x 200 matrix per sequence
 * Model: 1D CNN (Week 4)
-* Evaluation: AUROC, AUPR, saliency maps (Week 4)
+* Evaluation: AUROC, AUPR, saliency maps 
 
 ## Results
 
-*To be filled* 
+*Experiment                  AUROC  AUPR   Key finding* 
 
-## Setup
+
+
+*Random negatives            0.69   0.66   Partial GC content signal*
+
+
+
+*GC-matched negatives        0.68   0.68   Pure sequence signal*
+
+
+
+*GC-matched + class weights 0.68    0.67   Ceiling confirmed at \~0.68*
+
+
+
+*The biological conclusion: A local sequence model sees a ceiling at \~0.68 AUROC for chromatin accessibility.* 
+
+*The missing signal comes from cellular context — TF availability and methylation state — that sequence alone cannot encode.* 
+
+
+
+*A 3-layer 1D CNN trained on 200bp DNase-seq sequences achieves 0.68 AUROC for chromatin accessibility prediction. Performance is robust to negative set design (random vs GC-matched) and class weighting, suggesting the ceiling reflects fundamental limitations of local sequence context rather than training dynamics.* 
+
+
 
 ```bash
 conda env create -f environment.yml
